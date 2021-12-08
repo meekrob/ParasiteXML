@@ -209,6 +209,7 @@ BM_substituteFilterValues = function(cll, ...)
 #'   </Dataset>
 #' </Query>')
 #'
+#' library(biomaRt)
 #' mart = getParamart()
 #' lincs = runWithMart(query, mart)
 #' @export
@@ -236,6 +237,7 @@ runWithMart = function(cll, mart)
 #'   </Dataset>
 #' </Query>')
 #'
+#' library(biomaRt)
 #' mart = getParamart()
 #' lincs = runWithMart(query, mart)
 #' @export

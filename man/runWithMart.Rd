@@ -29,6 +29,7 @@ query = format_BM_from_XML('<?xml version="1.0" encoding="UTF-8"?>
   </Dataset>
 </Query>')
 
+library(biomaRt)
 mart = getParamart()
 lincs = runWithMart(query, mart)
 }
