@@ -1,0 +1,25 @@
+Package: ParasiteXML
+Title: Functions For Converting Parasite Database XML into R Code
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "David",
+           family = "King",
+           role = c("aut", "cre"),
+           email = "dcking@colostate.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: The online interface for Wormbase Parasite (https://parasite.wormbase.org/biomart)
+    is a web-based query designer to bioMart. It is interactive, allowing the user to figure out the
+    right fields to select to filter and return as results. The configured query may be saved without
+    running in a few different formats, including XML. This packages translates that XML into R syntax
+    to run in the bioMart package (biomaRt).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    xml2,
+    biomaRt
+Suggests:
+    GenomicRanges
