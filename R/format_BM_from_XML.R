@@ -250,3 +250,11 @@ getParamart = function(biomart="parasite_mart", dataset="wbps_gene", host="https
             ...)
   paramart
 }
+
+makeGRangesFromMartDataFrame = function(df,...) {
+  GenomicRanges::makeGRangesFromDataFrame(df, keep.extra.columns = T,
+                           seqnames.field = "chromosome_name",
+                           start.field = "start_position",
+                           end.field = "end_position",
+                           ...)
+}
