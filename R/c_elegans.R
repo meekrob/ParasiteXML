@@ -17,17 +17,17 @@ getCElegansGeneLocs = function(mart, gene_list=NULL, WBID=NULL) {
 
   R_query = format_BM_from_XML(QUERY)
 
-  if (! is.null(wbps_gene_id)) {
-    BM_addFilters(R_query, wbps_gene_id = wbps_gene_id)
+  if (! is.null(WBID)) {
+    R_query = BM_addFilters(R_query, wbps_gene_id = WBID)
   }
   else if (! is.null(gene_list)) {
-    BM_addFilters(R_query, gene_list = gene_list)
+    R_query = BM_addFilters(R_query, gene_name = gene_list)
   }
 
   genes = runWithMart(R_query, mart)
   genes$chromosome_name = paste("chr",genes$chromosome_name, sep='')
   genes$strand = ifelse(genes$strand==1, '+', '-')
-  GenomicRanges::makeGRangesFromMartDataFrame(genes)
+  makeGRangesFromMartDataFrame(genes)
 }
 
 getCElegansPromoters = function(mart, upstream=2000,downstream=500,gene_list=NULL, WBID=NULL) {
