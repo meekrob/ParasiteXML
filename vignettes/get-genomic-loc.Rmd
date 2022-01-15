@@ -1,0 +1,54 @@
+---
+title: "get-genomic-loc"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{get-genomic-loc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ParasiteXML)
+suppressPackageStartupMessages(library(biomaRt))
+suppressPackageStartupMessages(library(GenomicRanges))
+```
+
+
+```{r }
+QUERY='<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Query>
+<Query  virtualSchemaName = "parasite_mart" formatter = "TSV" header = "0" uniqueRows = "0" count = "" datasetConfigVersion = "0.6" >
+			
+	<Dataset name = "wbps_gene" interface = "default" >
+		<Filter name = "gene_name" value = "ELT-2,ACT-1,erfa-3"/>
+		<Filter name = "biotype" value = "protein_coding"/>
+		<Filter name = "species_id_1010" value = "caelegprjna13758"/>
+		<Attribute name = "wbps_gene_id" />
+		<Attribute name = "external_gene_id" />
+		<Attribute name = "chromosome_name" />
+		<Attribute name = "start_position" />
+		<Attribute name = "end_position" />
+		<Attribute name = "strand" />
+	</Dataset>
+</Query>'
+
+library(ParasiteXML)
+library(biomaRt)
+R_query = format_BM_from_XML(QUERY)
+
+if(!exists("mart")) {mart = getParamart()}
+genes = runWithMart(R_query, mart)
+genes$chromosome_name = paste("chr",genes$chromosome_name, sep='')
+genes$strand = ifelse(genes$strand==1, '+', '-')
+
+library(GenomicRanges)
+#grGenes = makeGRangesFromMartDataFrame(genes)
+          
+```
