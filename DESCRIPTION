@@ -22,7 +22,8 @@ biocViews:
 Imports: 
     xml2,
     biomaRt,
-    GenomicRanges
+    GenomicRanges,
+    crayon
 Suggests:
     knitr
 VignetteBuilder: knitr

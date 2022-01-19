@@ -248,6 +248,16 @@ getParamart = function(biomart="parasite_mart", dataset="wbps_gene", host="https
             host = host,
             port = port,
             ...)
+
+  if (! is.null(paramart))
+  {
+    library(crayon)
+    cat(green("Database connected ✓"),"\n")
+    cat(silver("biomart      ...      " %+% (paramart@biomart)),"\n")
+    cat(silver("host         ...      " %+% (paramart@host)),"\n")
+    cat(silver("dataset      ...      " %+% (paramart@dataset)),"\n")
+  }
+  
   paramart
 }
 
