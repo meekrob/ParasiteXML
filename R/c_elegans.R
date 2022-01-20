@@ -26,8 +26,12 @@ getCElegansGeneLocs = function(mart, gene_list=NULL, WBID=NULL) {
 
   genes = runWithMart(R_query, mart)
   genes$chromosome_name = paste("chr",genes$chromosome_name, sep='')
+  genes %>% 
+    mutate(chromosome_name = replace(chromosome_name, chromosome_name == "chrMtDNA", "chrM")) -> genes
   genes$strand = ifelse(genes$strand==1, '+', '-')
-  makeGRangesFromMartDataFrame(genes)
+  gr = makeGRangesFromMartDataFrame(genes)
+  GenomeInfoDb::seqinfo(gr) <- GenomeInfoDb::Seqinfo(genome='ce11')
+  gr
 }
 
 getCElegansPromoters = function(mart, upstream=2000,downstream=500,gene_list=NULL, WBID=NULL) {
