@@ -1,3 +1,4 @@
+#' @export
 getCElegansGeneLocs = function(mart, gene_list=NULL, WBID=NULL) {
   QUERY='<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Query>
@@ -33,7 +34,7 @@ getCElegansGeneLocs = function(mart, gene_list=NULL, WBID=NULL) {
   GenomeInfoDb::seqinfo(gr) <- GenomeInfoDb::Seqinfo(genome='ce11')
   gr
 }
-
+#' @export
 getCElegansPromoters = function(mart, upstream=2000,downstream=500,gene_list=NULL, WBID=NULL) {
   genes_df = getCElegansGeneLocs(mart, gene_list=NULL, WBID=NULL)
   GenomicRanges::promoters(genes_df, upstream, downstream)
