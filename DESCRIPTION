@@ -24,7 +24,7 @@ Imports:
     biomaRt,
     GenomicRanges,
     crayon,
-    tidyr
+    dplyr
 Suggests:
     knitr
 VignetteBuilder: knitr

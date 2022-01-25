@@ -15,7 +15,7 @@ getCElegansGeneLocs = function(mart, gene_list=NULL, WBID=NULL) {
 		<Attribute name = "strand" />
 	</Dataset>
 </Query>'
-  library(tidyr)
+  library(dplyr)
   R_query = format_BM_from_XML(QUERY)
 
   if (! is.null(WBID)) {
