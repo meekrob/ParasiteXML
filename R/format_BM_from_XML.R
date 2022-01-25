@@ -164,6 +164,8 @@ BM_removeFilters = function(cll, removefilter)
 BM_addFilters = function(cll, ...)
 {
   filterList = list(...)
+  # The syntax of filter, value is different for the call than for the input
+  # to 
   cll$filter = c(cll$filter, names(filterList))
   cll$value = c(cll$value, filterList)
   cll
