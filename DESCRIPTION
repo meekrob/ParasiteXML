@@ -23,7 +23,8 @@ Imports:
     xml2,
     biomaRt,
     GenomicRanges,
-    crayon
+    crayon,
+    tidyr
 Suggests:
     knitr
 VignetteBuilder: knitr
