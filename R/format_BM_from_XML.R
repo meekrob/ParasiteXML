@@ -105,7 +105,7 @@ format_BM_from_XML = function(xmltext, printCode=TRUE) {
 
   output_specs = xml2::xml_attr(attribute_nodes, "name")
 
-  cl = call("getBM", filter=names(filter_specs), value=filter_specs, attributes=output_specs)
+  cl = call("biomaRt::getBM", filter=names(filter_specs), value=filter_specs, attributes=output_specs)
   if (printCode) {print(cl)}
   invisible(cl)
 }
